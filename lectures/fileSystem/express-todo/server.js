@@ -15,11 +15,20 @@ app.get('/todos', (req, res) => { ///todos = endpoint (what you put at the back 
     fs.readFile(FILE_PATH, 'utf8', (err, data) => {  //fs = file system
         if (err) return res.status(500).json({ error: 'Failed to read file' });
         res.json(JSON.parse(data)); //when you parse the data it will come back as a json file instead of a string
+app.use(express.json());
+
+
+app.get('/todos', (req, res) => {
+    console.log("get todos hit")
+    fs.readFile(FILE_PATH, 'utf8', (err, data) => {
+        if (err) return res.status(500).json({ error: 'Failed to read file' });
+        res.json(JSON.parse(data));
     });
 });
 
 app.post('/todos', (req, res) => {
     console.log("post todos hit", req.body)
+    console.log("post todos hit")
 
     const newTodo = req.body;
     fs.readFile(FILE_PATH, 'utf8', (err, data) => {
@@ -65,4 +74,3 @@ app.delete('/todos/:id', (req, res) => {
 });
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-

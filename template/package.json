@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "express": "^4.21.2"
+<<<<<<< HEAD
   },
   "name": "template",
   "version": "1.0.0",
@@ -13,4 +14,7 @@
   "author": "",
   "license": "ISC",
   "description": ""
+=======
+  }
+>>>>>>> 17f1931f9412c2281acfdf25e3df4abb39399d37
 }
