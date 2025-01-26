@@ -27,5 +27,5 @@ app.get('/greet', (req, res) => {
 app.get('/users/:id/orders', (req, res) => {
     const { id } = req.params;
     const { status } = req.query;
-    res.json({ message: `Fetching orders for user ${id} with status ${stats}` });
+    res.json({ message: `Fetching orders for user ${id} with status ${status}` });
 });
