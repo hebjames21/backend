@@ -17,6 +17,7 @@ app.get('/todos', (req, res) => { ///todos = endpoint (what you put at the back 
         res.json(JSON.parse(data)); //when you parse the data it will come back as a json file instead of a string
 app.use(express.json());
 
+console.log("filePath", FILE_PATH)
 
 app.get('/todos', (req, res) => {
     console.log("get todos hit")
@@ -27,7 +28,6 @@ app.get('/todos', (req, res) => {
 });
 
 app.post('/todos', (req, res) => {
-    console.log("post todos hit", req.body)
     console.log("post todos hit")
 
     const newTodo = req.body;
@@ -43,7 +43,7 @@ app.post('/todos', (req, res) => {
 }); 
 
 app.put('/todos/:id', (req, res) => {
-    console.log("put todos hit")
+    console.log("put todos hit", req.body, req.params)
 
     const id = parseInt(req.params.id);
     const updatedTodo = req.body;
