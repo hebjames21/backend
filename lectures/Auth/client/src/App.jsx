@@ -12,7 +12,13 @@ function App() {
   })
   const handleLogin = (e) => {
     console.log("login", e.target.value)
-    setLogin({ ...prev, [e.target.id]: e.target.value })
+    setLogin(prev => {
+      console.log("prev", prev)
+      return {
+        ...prev,
+        [e.target.id]: e.target.value
+      }
+    })
   }
   const handleLoginSubmit = () => {
     console.log(login)
@@ -21,7 +27,14 @@ function App() {
       url: 'http://localhost:3000/login',
       data: login
     })
-      .then(res => console.log("res", res.data))
+      .then(res => {
+        console.log("res", res.data)
+          if(res.data.msg === "Good Login"){
+            alert(`Welcome back : ${res.data.found.username}`)
+          }else {
+            alert("BAD LOGIN")
+          }
+      })
       .catch(error => console.log(error))
   }
   const handleRegister = (e) => {
@@ -57,9 +70,9 @@ function App() {
       </div>
       <br />
       <br />
-<hr />
-<br />
-<br />
+      <hr />
+      <br />
+      <br />
       <div id='register'>
         <h1>Register</h1>
         <input id='username' onChange={(e) => handleRegister(e)} type='text' placeholder='Username' />
@@ -75,3 +88,17 @@ function App() {
   )
 }
 export default App
+
+
+
+
+
+
+
+
+
+
+
+
+
+
